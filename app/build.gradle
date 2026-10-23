@@ -1,0 +1,43 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.szebastian.hub'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.szebastian.hub"
+        minSdk 29
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+    }
+
+    // One fixed key for every build, so a new APK installs over the old one instead of
+    // failing with "App not installed". The workflow creates it once and commits it to keystore/.
+    signingConfigs {
+        hub {
+            storeFile rootProject.file('keystore/hub.keystore')
+            storePassword 'hub-apps'
+            keyAlias 'hub'
+            keyPassword 'hub-apps'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+        debug {
+            if (rootProject.file('keystore/hub.keystore').exists()) {
+                signingConfig signingConfigs.hub
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}

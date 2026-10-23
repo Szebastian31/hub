@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Android 11+ hides other apps unless they're named here. These are the five apps the hub opens. -->
+    <queries>
+        <package android:name="com.hora.clock" />
+        <package android:name="com.kalendae.money" />
+        <package android:name="com.consensus.weather" />
+        <package android:name="com.augur.stars" />
+        <package android:name="com.caelum.sky" />
+        <!-- for opening the web version when an app isn't installed -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:label="Hub"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Hub">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
