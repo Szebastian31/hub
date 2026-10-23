@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="hub_bg">#0E1116</color>
-    <color name="hub_icon_bg">#0E1116</color>
+    <color name="hub_sky_top">#C9CCF3</color>
+    <color name="hub_sky_bottom">#F8CBA9</color>
 
-    <style name="Theme.Hub" parent="@android:style/Theme.Material.NoActionBar">
-        <item name="android:windowBackground">@color/hub_bg</item>
-        <item name="android:statusBarColor">@color/hub_bg</item>
-        <item name="android:navigationBarColor">@color/hub_bg</item>
+    <style name="Theme.Hub" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/hub_sky_top</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
 </resources>
