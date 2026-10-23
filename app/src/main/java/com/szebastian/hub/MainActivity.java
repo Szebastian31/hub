@@ -42,12 +42,15 @@ public class MainActivity extends Activity {
     };
 
     // same palette as the "Five apps for looking ahead" poster
-    private static final int SKY_TOP = 0xFFC9CCF3;
-    private static final int SKY_BOTTOM = 0xFFF8CBA9;
-    private static final int CARD = 0xF2FFFFFF;
+    private static final int SKY_TOP = 0xFF8C92D8;
+    private static final int SKY_BOTTOM = 0xFFE29C76;
+    private static final int CARD_LEFT = 0xCCFFFFFF;  // 80% white
+    private static final int CARD_RIGHT = 0x66FFFFFF; // 40% white
+    private static final int CARD_RIM = 0x99FFFFFF;
     private static final int BLUE = 0xFF2F3FA8;
     private static final int INK = 0xFF2A2A38;
     private static final int MUTED = 0xFF8C889A;
+    private static final int LABEL = 0xFF3E3A58; // small text straight on the sky, darker so it stays readable
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +72,7 @@ public class MainActivity extends Activity {
 
         TextView kicker = new TextView(this);
         kicker.setText("HUB  ·  0" + APPS.length + " APPS");
-        kicker.setTextColor(MUTED);
+        kicker.setTextColor(LABEL);
         kicker.setTextSize(11);
         kicker.setLetterSpacing(0.18f);
         kicker.setPadding(dp(4), 0, 0, dp(8));
@@ -77,7 +80,7 @@ public class MainActivity extends Activity {
 
         TextView title = new TextView(this);
         title.setText("Five apps for\nlooking ahead.");
-        title.setTextColor(BLUE);
+        title.setTextColor(0xFF1F2A80);
         title.setTextSize(32);
         title.setTypeface(Typeface.create(Typeface.SERIF, Typeface.NORMAL));
         title.setLineSpacing(0, 1.05f);
@@ -93,7 +96,7 @@ public class MainActivity extends Activity {
 
         TextView footer = new TextView(this);
         footer.setText("MADE TO BE LOOKED UP AT");
-        footer.setTextColor(MUTED);
+        footer.setTextColor(LABEL);
         footer.setTextSize(10);
         footer.setLetterSpacing(0.18f);
         footer.setGravity(Gravity.CENTER);
@@ -115,11 +118,13 @@ public class MainActivity extends Activity {
         row.setOrientation(LinearLayout.HORIZONTAL);
         row.setGravity(Gravity.CENTER_VERTICAL);
         row.setPadding(dp(16), dp(14), dp(16), dp(14));
-        GradientDrawable shape = new GradientDrawable();
-        shape.setColor(CARD);
+        // frosted glass: 80% white on the left fading to 40% on the right, with a thin bright rim.
+        // No elevation, because a shadow would show through the glass.
+        GradientDrawable shape = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT,
+            new int[] {CARD_LEFT, CARD_RIGHT});
         shape.setCornerRadius(dp(22));
+        shape.setStroke(Math.max(1, dp(1)), CARD_RIM);
         row.setBackground(new RippleDrawable(ColorStateList.valueOf(0x222F3FA8), shape, null));
-        row.setElevation(dp(1));
         if (!installed) row.setAlpha(0.6f);
 
         LinearLayout.LayoutParams iconLp = new LinearLayout.LayoutParams(dp(56), dp(56));
@@ -133,7 +138,7 @@ public class MainActivity extends Activity {
         name.setText(label);
         name.setTextColor(INK);
         name.setTextSize(19);
-        name.setTypeface(Typeface.create(Typeface.SERIF, Typeface.NORMAL));
+        name.setTypeface(Typeface.create(Typeface.SERIF, 600, false));
         text.addView(name);
 
         TextView cat = new TextView(this);
@@ -217,7 +222,7 @@ public class MainActivity extends Activity {
             star.setColor(0xCCFFFFFF);
             orbit.setStyle(Paint.Style.STROKE);
             orbit.setStrokeWidth(dp(1));
-            orbit.setColor(0x33FFFFFF);
+            orbit.setColor(0x40FFFFFF);
         }
 
         @Override
