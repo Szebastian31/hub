@@ -42,20 +42,37 @@ public class MainActivity extends Activity {
     };
 
     // same palette as the "Five apps for looking ahead" poster
-    private static final int SKY_TOP = 0xFF8C92D8;
-    private static final int SKY_BOTTOM = 0xFFE29C76;
+    private static final int SKY_TOP = 0xFF4A4F92;
+    private static final int SKY_BOTTOM = 0xFFA4634A;
     private static final int CARD_LEFT = 0xCCFFFFFF;  // 80% white
     private static final int CARD_RIGHT = 0x66FFFFFF; // 40% white
     private static final int CARD_RIM = 0x99FFFFFF;
     private static final int BLUE = 0xFF2F3FA8;
     private static final int INK = 0xFF2A2A38;
     private static final int MUTED = 0xFF8C889A;
-    private static final int LABEL = 0xFF3E3A58; // small text straight on the sky, darker so it stays readable
+    private static final int LABEL = 0xCCECEAF6; // small text straight on the dark sky
+    private static final int TITLE = 0xFFF4F2FB;
+
+    // Hub's own fonts, bundled in assets/fonts, so the phone's theme font (ColorOS replaces
+    // the system serif) can't change them. If a file is missing, the system font is used instead.
+    private Typeface serif, serifBold, serifItalic;
+    private final Typeface mono = Typeface.MONOSPACE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setBackgroundDrawable(new SkyDrawable());
+        serif = font("NotoSerif-Regular.ttf", Typeface.NORMAL);
+        serifBold = font("NotoSerif-SemiBold.ttf", Typeface.BOLD);
+        serifItalic = font("NotoSerif-Italic.ttf", Typeface.ITALIC);
+    }
+
+    private Typeface font(String file, int fallbackStyle) {
+        try {
+            return Typeface.createFromAsset(getAssets(), "fonts/" + file);
+        } catch (RuntimeException missing) {
+            return Typeface.create(Typeface.SERIF, fallbackStyle);
+        }
     }
 
     // rebuilt every time the hub comes back, so a newly installed or removed app shows up straight away
@@ -73,6 +90,7 @@ public class MainActivity extends Activity {
         TextView kicker = new TextView(this);
         kicker.setText("HUB  ·  0" + APPS.length + " APPS");
         kicker.setTextColor(LABEL);
+        kicker.setTypeface(mono);
         kicker.setTextSize(11);
         kicker.setLetterSpacing(0.18f);
         kicker.setPadding(dp(4), 0, 0, dp(8));
@@ -80,9 +98,9 @@ public class MainActivity extends Activity {
 
         TextView title = new TextView(this);
         title.setText("Five apps for\nlooking ahead.");
-        title.setTextColor(0xFF1F2A80);
+        title.setTextColor(TITLE);
         title.setTextSize(32);
-        title.setTypeface(Typeface.create(Typeface.SERIF, Typeface.NORMAL));
+        title.setTypeface(serif);
         title.setLineSpacing(0, 1.05f);
         title.setPadding(dp(4), 0, 0, dp(22));
         column.addView(title);
@@ -97,6 +115,7 @@ public class MainActivity extends Activity {
         TextView footer = new TextView(this);
         footer.setText("MADE TO BE LOOKED UP AT");
         footer.setTextColor(LABEL);
+        footer.setTypeface(mono);
         footer.setTextSize(10);
         footer.setLetterSpacing(0.18f);
         footer.setGravity(Gravity.CENTER);
@@ -138,14 +157,14 @@ public class MainActivity extends Activity {
         name.setText(label);
         name.setTextColor(INK);
         name.setTextSize(19);
-        name.setTypeface(Typeface.create(Typeface.SERIF, 600, false));
+        name.setTypeface(serifBold);
         text.addView(name);
 
         TextView cat = new TextView(this);
         cat.setText(category);
         cat.setTextColor(BLUE);
         cat.setTextSize(13);
-        cat.setTypeface(Typeface.create(Typeface.SERIF, Typeface.ITALIC));
+        cat.setTypeface(serifItalic);
         text.addView(cat);
 
         if (!installed) {
@@ -199,7 +218,7 @@ public class MainActivity extends Activity {
         letter.setText(label.substring(0, 1));
         letter.setTextColor(MUTED);
         letter.setTextSize(24);
-        letter.setTypeface(Typeface.create(Typeface.SERIF, Typeface.NORMAL));
+        letter.setTypeface(serif);
         letter.setGravity(Gravity.CENTER);
         GradientDrawable circle = new GradientDrawable();
         circle.setShape(GradientDrawable.OVAL);
