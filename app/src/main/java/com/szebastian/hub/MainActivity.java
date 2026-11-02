@@ -32,16 +32,18 @@ import java.util.Random;
 public class MainActivity extends Activity {
 
     // package name (applicationId in each app's build.gradle), name, category,
-    // and the web version to open if the app isn't installed
+    // and the web version to open if the app isn't installed ("" for Android-only apps)
     private static final String[][] APPS = {
         {"com.hora.clock", "Hora", "Clock", "https://szebastian31.github.io/hora/"},
-        {"com.kalendae.money", "Kalendae", "Budgeting", "https://szebastian31.github.io/kalendae/"},
         {"com.consensus.weather", "Consensus", "Weather", "https://szebastian31.github.io/Consensus_Weather/"},
         {"com.augur.stars", "Augur", "Fate", "https://szebastian31.github.io/augur/"},
+        {"com.annales.journal", "Annales", "Journal", ""},
+        {"com.kalendae.money", "Kalendae", "Budgeting", "https://szebastian31.github.io/kalendae/"},
         {"com.caelum.sky", "Caelum", "Sky", "https://szebastian31.github.io/caelum/"},
+        {"com.fidelis.player", "Fidelis", "Music", ""},
     };
 
-    // same palette as the "Five apps for looking ahead" poster
+    // same palette as the "Five apps for looking ahead" poster, darkened
     private static final int SKY_TOP = 0xFF4A4F92;
     private static final int SKY_BOTTOM = 0xFFA4634A;
     private static final int CARD_LEFT = 0xCCFFFFFF;  // 80% white
@@ -97,7 +99,7 @@ public class MainActivity extends Activity {
         column.addView(kicker);
 
         TextView title = new TextView(this);
-        title.setText("Five apps for\nlooking ahead.");
+        title.setText("Seven apps for\nlooking ahead.");
         title.setTextColor(TITLE);
         title.setTextSize(32);
         title.setTypeface(serif);
@@ -169,7 +171,7 @@ public class MainActivity extends Activity {
 
         if (!installed) {
             TextView note = new TextView(this);
-            note.setText("Not installed · opens the web version");
+            note.setText(web.isEmpty() ? "Not installed" : "Not installed · opens the web version");
             note.setTextColor(MUTED);
             note.setTextSize(12);
             note.setPadding(0, dp(3), 0, 0);
@@ -192,8 +194,10 @@ public class MainActivity extends Activity {
                 if (installed) {
                     launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(launch);
-                } else {
+                } else if (!web.isEmpty()) {
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(web)));
+                } else {
+                    Toast.makeText(this, label + " isn't installed", Toast.LENGTH_SHORT).show();
                 }
             } catch (ActivityNotFoundException e) {
                 Toast.makeText(this, "Couldn't open " + label, Toast.LENGTH_SHORT).show();

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- five stars, one per app, joined into a constellation and circled by a tilted orbit.
-     Hora orange, Kalendae moon gold, Consensus blue, Augur violet, and Caelum the brightest, in white.
+<!-- seven stars, one per app, joined into a constellation and circled by a tilted orbit.
+     Hora orange, Consensus blue, Augur violet, Annales stamp rose, Kalendae moon gold,
+     Caelum the brightest in white, Fidelis aurora green.
      Everything stays inside the 66dp safe zone so no launcher mask crops it. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
@@ -24,60 +25,78 @@
         </path>
     </group>
 
-    <!-- constellation lines -->
+    <!-- constellation lines, in the hub's order: Hora, Consensus, Augur, Annales, Kalendae, Caelum, Fidelis -->
     <path android:strokeColor="#59FFFFFF" android:strokeWidth="0.7"
         android:strokeLineCap="round" android:strokeLineJoin="round"
-        android:pathData="M40,41L61,35L72,54L57,70L38,63Z" />
+        android:pathData="M36,44L52,32L69,38L75,56L63,72L43,68L31,57Z" />
 
     <!-- soft glows -->
-    <path android:pathData="M30,41a10,10 0 1,0 20,0a10,10 0 1,0 -20,0">
+    <path android:pathData="M27,44a9,9 0 1,0 18,0a9,9 0 1,0 -18,0">
         <aapt:attr name="android:fillColor">
-            <gradient android:type="radial" android:centerX="40" android:centerY="41" android:gradientRadius="10"
+            <gradient android:type="radial" android:centerX="36" android:centerY="44" android:gradientRadius="9"
                 android:startColor="#80FF9A3C" android:endColor="#00FF9A3C" />
         </aapt:attr>
     </path>
-    <path android:pathData="M52,35a9,9 0 1,0 18,0a9,9 0 1,0 -18,0">
+    <path android:pathData="M44,32a8,8 0 1,0 16,0a8,8 0 1,0 -16,0">
         <aapt:attr name="android:fillColor">
-            <gradient android:type="radial" android:centerX="61" android:centerY="35" android:gradientRadius="9"
-                android:startColor="#80F5E3A1" android:endColor="#00F5E3A1" />
-        </aapt:attr>
-    </path>
-    <path android:pathData="M63,54a9,9 0 1,0 18,0a9,9 0 1,0 -18,0">
-        <aapt:attr name="android:fillColor">
-            <gradient android:type="radial" android:centerX="72" android:centerY="54" android:gradientRadius="9"
+            <gradient android:type="radial" android:centerX="52" android:centerY="32" android:gradientRadius="8"
                 android:startColor="#807FB8FF" android:endColor="#007FB8FF" />
         </aapt:attr>
     </path>
-    <path android:pathData="M48,70a9,9 0 1,0 18,0a9,9 0 1,0 -18,0">
+    <path android:pathData="M61,38a8,8 0 1,0 16,0a8,8 0 1,0 -16,0">
         <aapt:attr name="android:fillColor">
-            <gradient android:type="radial" android:centerX="57" android:centerY="70" android:gradientRadius="9"
+            <gradient android:type="radial" android:centerX="69" android:centerY="38" android:gradientRadius="8"
                 android:startColor="#80C3A6FF" android:endColor="#00C3A6FF" />
         </aapt:attr>
     </path>
-    <path android:pathData="M25,63a13,13 0 1,0 26,0a13,13 0 1,0 -26,0">
+    <path android:pathData="M67,56a8,8 0 1,0 16,0a8,8 0 1,0 -16,0">
         <aapt:attr name="android:fillColor">
-            <gradient android:type="radial" android:centerX="38" android:centerY="63" android:gradientRadius="13"
+            <gradient android:type="radial" android:centerX="75" android:centerY="56" android:gradientRadius="8"
+                android:startColor="#80F28B9B" android:endColor="#00F28B9B" />
+        </aapt:attr>
+    </path>
+    <path android:pathData="M55,72a8,8 0 1,0 16,0a8,8 0 1,0 -16,0">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="radial" android:centerX="63" android:centerY="72" android:gradientRadius="8"
+                android:startColor="#80F5E3A1" android:endColor="#00F5E3A1" />
+        </aapt:attr>
+    </path>
+    <path android:pathData="M31,68a12,12 0 1,0 24,0a12,12 0 1,0 -24,0">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="radial" android:centerX="43" android:centerY="68" android:gradientRadius="12"
                 android:startColor="#99FFFFFF" android:endColor="#00FFFFFF" />
+        </aapt:attr>
+    </path>
+    <path android:pathData="M23,57a8,8 0 1,0 16,0a8,8 0 1,0 -16,0">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="radial" android:centerX="31" android:centerY="57" android:gradientRadius="8"
+                android:startColor="#807FE0C4" android:endColor="#007FE0C4" />
         </aapt:attr>
     </path>
 
     <!-- four-point sparkles with curved sides -->
     <path android:fillColor="#FFB067"
-        android:pathData="M40,36Q40,41 45,41Q40,41 40,46Q40,41 35,41Q40,41 40,36Z" />
-    <path android:fillColor="#F8EAB4"
-        android:pathData="M61,31Q61,35 65,35Q61,35 61,39Q61,35 57,35Q61,35 61,31Z" />
+        android:pathData="M36,39.5Q36,44 40.5,44Q36,44 36,48.5Q36,44 31.5,44Q36,44 36,39.5Z" />
     <path android:fillColor="#9CCAFF"
-        android:pathData="M72,49.5Q72,54 76.5,54Q72,54 72,58.5Q72,54 67.5,54Q72,54 72,49.5Z" />
+        android:pathData="M52,28Q52,32 56,32Q52,32 52,36Q52,32 48,32Q52,32 52,28Z" />
     <path android:fillColor="#D4BEFF"
-        android:pathData="M57,66Q57,70 61,70Q57,70 57,74Q57,70 53,70Q57,70 57,66Z" />
+        android:pathData="M69,34Q69,38 73,38Q69,38 69,42Q69,38 65,38Q69,38 69,34Z" />
+    <path android:fillColor="#F6A9B5"
+        android:pathData="M75,52Q75,56 79,56Q75,56 75,60Q75,56 71,56Q75,56 75,52Z" />
+    <path android:fillColor="#F8EAB4"
+        android:pathData="M63,68Q63,72 67,72Q63,72 63,76Q63,72 59,72Q63,72 63,68Z" />
     <path android:fillColor="#FFFFFF"
-        android:pathData="M38,55.5Q38,63 45.5,63Q38,63 38,70.5Q38,63 30.5,63Q38,63 38,55.5Z" />
+        android:pathData="M43,61Q43,68 50,68Q43,68 43,75Q43,68 36,68Q43,68 43,61Z" />
+    <path android:fillColor="#A6EFD9"
+        android:pathData="M31,53Q31,57 35,57Q31,57 31,61Q31,57 27,57Q31,57 31,53Z" />
 
     <!-- bright cores -->
     <path android:fillColor="#FFFFFF"
-        android:pathData="M39.1,41a0.9,0.9 0 1,0 1.8,0a0.9,0.9 0 1,0 -1.8,0
-                          M60.2,35a0.8,0.8 0 1,0 1.6,0a0.8,0.8 0 1,0 -1.6,0
-                          M71.2,54a0.8,0.8 0 1,0 1.6,0a0.8,0.8 0 1,0 -1.6,0
-                          M56.2,70a0.8,0.8 0 1,0 1.6,0a0.8,0.8 0 1,0 -1.6,0
-                          M36.8,63a1.2,1.2 0 1,0 2.4,0a1.2,1.2 0 1,0 -2.4,0" />
+        android:pathData="M35.1,44a0.9,0.9 0 1,0 1.8,0a0.9,0.9 0 1,0 -1.8,0
+                          M51.2,32a0.8,0.8 0 1,0 1.6,0a0.8,0.8 0 1,0 -1.6,0
+                          M68.2,38a0.8,0.8 0 1,0 1.6,0a0.8,0.8 0 1,0 -1.6,0
+                          M74.2,56a0.8,0.8 0 1,0 1.6,0a0.8,0.8 0 1,0 -1.6,0
+                          M62.2,72a0.8,0.8 0 1,0 1.6,0a0.8,0.8 0 1,0 -1.6,0
+                          M41.8,68a1.2,1.2 0 1,0 2.4,0a1.2,1.2 0 1,0 -2.4,0
+                          M30.2,57a0.8,0.8 0 1,0 1.6,0a0.8,0.8 0 1,0 -1.6,0" />
 </vector>

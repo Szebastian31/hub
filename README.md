@@ -1,8 +1,8 @@
 # Hub
 
-**One list, five apps: Hora, Kalendae, Consensus Weather, Augur and Caelum.**
+**One list, seven apps: Hora, Consensus Weather, Augur, Annales, Kalendae, Caelum and Fidelis.**
 
-Tap a row and that app opens. Each row shows the app's own icon, its name and its category. If an app isn't installed, its row is faded and opens the web version instead.
+Tap a row and that app opens. Each row shows the app's own icon, its name and its category. If an app isn't installed, its row is faded; it opens the web version where there is one (Annales and Fidelis are Android only).
 
 ## Getting started
 
@@ -23,6 +23,7 @@ A single native Activity with no WebView and no libraries. The rows are built in
 | `app/src/main/java/com/szebastian/hub/MainActivity.java` | The list screen. The `APPS` list at the top holds each app's package name, name, category and web address |
 | `app/src/main/AndroidManifest.xml` | The `<queries>` list, which Android 11+ needs before one app can see and open another |
 | `app/src/main/res/` | Theme colours and the launcher icon |
+| `app/src/main/assets/fonts/` | Noto Serif, bundled so the phone's theme font can't replace it |
 | `keystore/` | The signing key, created and committed by the first workflow run |
 | `.github/workflows/build.yml` | Builds the APK and publishes it as a release |
 
