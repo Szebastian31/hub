@@ -24,7 +24,12 @@ A single native Activity with no WebView and no libraries. The rows are built in
 | `app/src/main/AndroidManifest.xml` | The `<queries>` list, which Android 11+ needs before one app can see and open another |
 | `app/src/main/res/` | Theme colours and the launcher icon |
 | `app/src/main/assets/fonts/` | Noto Serif, bundled so the phone's theme font can't replace it |
-| `keystore/` | The signing key, created and committed by the first workflow run |
 | `.github/workflows/build.yml` | Builds the APK and publishes it as a release |
 
+**Signing.** Builds are signed with the family key. It never lives in git: GitHub builds read it from the `FAMILY_*` secrets, local builds from `~/.gradle/gradle.properties`. Every build installs over the last one.
+
 **Adding an app:** add a line to `APPS` in `MainActivity.java` and a `<package>` line to `<queries>` in `AndroidManifest.xml`. Then bump `versionName` + `versionCode` in `app/build.gradle` for a new APK release.
+
+## License
+
+Released under the [MIT License](LICENSE).
