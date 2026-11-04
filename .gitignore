@@ -5,3 +5,9 @@ local.properties
 .idea/
 *.iml
 .DS_Store
+
+# signing keys never go in git
+*.keystore
+*.jks
+keystore/
+local.properties
