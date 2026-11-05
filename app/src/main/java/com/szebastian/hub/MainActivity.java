@@ -32,15 +32,15 @@ import java.util.Random;
 public class MainActivity extends Activity {
 
     // package name (applicationId in each app's build.gradle), name, category,
-    // and the web version to open if the app isn't installed ("" for Android-only apps)
+    // and the web version to open if the app isn't installed
     private static final String[][] APPS = {
         {"com.hora.clock", "Hora", "Clock", "https://szebastian31.github.io/hora/"},
         {"com.consensus.weather", "Consensus", "Weather", "https://szebastian31.github.io/Consensus_Weather/"},
         {"com.augur.stars", "Augur", "Fate", "https://szebastian31.github.io/augur/"},
-        {"com.annales.journal", "Annales", "Journal", ""},
+        {"com.annales.journal", "Annales", "Journal", "https://szebastian31.github.io/annales/"},
         {"com.kalendae.money", "Kalendae", "Budgeting", "https://szebastian31.github.io/kalendae/"},
         {"com.caelum.sky", "Caelum", "Sky", "https://szebastian31.github.io/caelum/"},
-        {"com.fidelis.player", "Fidelis", "Music", ""},
+        {"com.fidelis.player", "Fidelis", "Music", "https://szebastian31.github.io/fidelis/"},
     };
 
     // same palette as the "Five apps for looking ahead" poster, darkened
@@ -87,7 +87,7 @@ public class MainActivity extends Activity {
     private View buildScreen() {
         LinearLayout column = new LinearLayout(this);
         column.setOrientation(LinearLayout.VERTICAL);
-        column.setPadding(dp(20), dp(52), dp(20), dp(28));
+        column.setPadding(dp(20), dp(46), dp(20), dp(24));
 
         TextView kicker = new TextView(this);
         kicker.setText("HUB  ·  0" + APPS.length + " APPS");
@@ -95,22 +95,22 @@ public class MainActivity extends Activity {
         kicker.setTypeface(mono);
         kicker.setTextSize(11);
         kicker.setLetterSpacing(0.18f);
-        kicker.setPadding(dp(4), 0, 0, dp(8));
+        kicker.setPadding(dp(4), 0, 0, dp(6));
         column.addView(kicker);
 
         TextView title = new TextView(this);
         title.setText("Seven apps for\nlooking ahead.");
         title.setTextColor(TITLE);
-        title.setTextSize(32);
+        title.setTextSize(27);
         title.setTypeface(serif);
         title.setLineSpacing(0, 1.05f);
-        title.setPadding(dp(4), 0, 0, dp(22));
+        title.setPadding(dp(4), 0, 0, dp(18));
         column.addView(title);
 
         for (int i = 0; i < APPS.length; i++) {
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            lp.bottomMargin = dp(12);
+            lp.bottomMargin = dp(11);
             column.addView(buildRow(APPS[i]), lp);
         }
 
@@ -121,7 +121,7 @@ public class MainActivity extends Activity {
         footer.setTextSize(10);
         footer.setLetterSpacing(0.18f);
         footer.setGravity(Gravity.CENTER);
-        footer.setPadding(0, dp(14), 0, 0);
+        footer.setPadding(0, dp(12), 0, 0);
         column.addView(footer);
 
         ScrollView scroll = new ScrollView(this);
@@ -138,18 +138,18 @@ public class MainActivity extends Activity {
         LinearLayout row = new LinearLayout(this);
         row.setOrientation(LinearLayout.HORIZONTAL);
         row.setGravity(Gravity.CENTER_VERTICAL);
-        row.setPadding(dp(16), dp(14), dp(16), dp(14));
+        row.setPadding(dp(16), dp(12), dp(16), dp(12));
         // frosted glass: 80% white on the left fading to 40% on the right, with a thin bright rim.
         // No elevation, because a shadow would show through the glass.
         GradientDrawable shape = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT,
             new int[] {CARD_LEFT, CARD_RIGHT});
-        shape.setCornerRadius(dp(22));
+        shape.setCornerRadius(dp(20));
         shape.setStroke(Math.max(1, dp(1)), CARD_RIM);
         row.setBackground(new RippleDrawable(ColorStateList.valueOf(0x222F3FA8), shape, null));
         if (!installed) row.setAlpha(0.6f);
 
-        LinearLayout.LayoutParams iconLp = new LinearLayout.LayoutParams(dp(56), dp(56));
-        iconLp.rightMargin = dp(14);
+        LinearLayout.LayoutParams iconLp = new LinearLayout.LayoutParams(dp(52), dp(52));
+        iconLp.rightMargin = dp(13);
         row.addView(buildIcon(pm, pkg, label, installed), iconLp);
 
         LinearLayout text = new LinearLayout(this);
@@ -158,7 +158,7 @@ public class MainActivity extends Activity {
         TextView name = new TextView(this);
         name.setText(label);
         name.setTextColor(INK);
-        name.setTextSize(19);
+        name.setTextSize(18);
         name.setTypeface(serifBold);
         text.addView(name);
 

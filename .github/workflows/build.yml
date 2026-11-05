@@ -70,4 +70,4 @@ jobs:
           body: |
             Download **Hub_v${{ steps.ver.outputs.name }}.apk** below and open it on your phone to install.
 
-            One screen with Hora, Kalendae, Consensus Weather, Augur and Caelum. Tap a tile to open that app.
+            One list with Hora, Consensus Weather, Augur, Annales, Kalendae, Caelum and Fidelis. Tap a row to open that app.

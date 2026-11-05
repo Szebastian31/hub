@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="18 18 72 72" width="512" height="512">
+  <!-- Hub's launcher icon (app/src/main/res/drawable/ic_launcher_*.xml) for the web: seven stars, one per app,
+       joined into a constellation and circled by a tilted orbit. Cropped to the part a launcher shows. -->
+  <defs>
+    <radialGradient id="night" cx="54" cy="44" r="78" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#323C86"/><stop offset=".5" stop-color="#161C4A"/><stop offset="1" stop-color="#070A1E"/>
+    </radialGradient>
+    <radialGradient id="dawn" cx="54" cy="124" r="62" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F8CBA9" stop-opacity=".4"/><stop offset=".5" stop-color="#C9A0C8" stop-opacity=".13"/><stop offset="1" stop-color="#C9CCF3" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="orbit" x1="54" y1="41" x2="54" y2="67" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#fff" stop-opacity=".45"/>
+    </linearGradient>
+    <radialGradient id="g"><stop offset="0" stop-color="currentColor" stop-opacity=".5"/><stop offset="1" stop-color="currentColor" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect x="0" y="0" width="108" height="108" fill="url(#night)"/>
+  <rect x="0" y="0" width="108" height="108" fill="url(#dawn)"/>
+  <g fill="#fff" fill-opacity=".3">
+    <circle cx="24" cy="30" r=".7"/><circle cx="84" cy="30" r=".6"/><circle cx="82" cy="78" r=".8"/>
+    <circle cx="27" cy="80" r=".5"/><circle cx="48" cy="22" r=".5"/><circle cx="88" cy="56" r=".5"/>
+  </g>
+  <ellipse cx="54" cy="54" rx="32" ry="13" fill="none" stroke="url(#orbit)" stroke-width=".9" transform="rotate(-22 54 54)"/>
+  <path d="M36,44L52,32L69,38L75,56L63,72L43,68L31,57Z" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width=".7" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="36" cy="44" r="9" fill="url(#g)" color="#FF9A3C"/>
+  <circle cx="52" cy="32" r="8" fill="url(#g)" color="#7FB8FF"/>
+  <circle cx="69" cy="38" r="8" fill="url(#g)" color="#C3A6FF"/>
+  <circle cx="75" cy="56" r="8" fill="url(#g)" color="#F28B9B"/>
+  <circle cx="63" cy="72" r="8" fill="url(#g)" color="#F5E3A1"/>
+  <circle cx="43" cy="68" r="12" fill="url(#g)" color="#FFFFFF"/>
+  <circle cx="31" cy="57" r="8" fill="url(#g)" color="#7FE0C4"/>
+  <path fill="#FFB067" d="M36,39.5Q36,44 40.5,44Q36,44 36,48.5Q36,44 31.5,44Q36,44 36,39.5Z"/>
+  <path fill="#9CCAFF" d="M52,28Q52,32 56,32Q52,32 52,36Q52,32 48,32Q52,32 52,28Z"/>
+  <path fill="#D4BEFF" d="M69,34Q69,38 73,38Q69,38 69,42Q69,38 65,38Q69,38 69,34Z"/>
+  <path fill="#F6A9B5" d="M75,52Q75,56 79,56Q75,56 75,60Q75,56 71,56Q75,56 75,52Z"/>
+  <path fill="#F8EAB4" d="M63,68Q63,72 67,72Q63,72 63,76Q63,72 59,72Q63,72 63,68Z"/>
+  <path fill="#FFFFFF" d="M43,61Q43,68 50,68Q43,68 43,75Q43,68 36,68Q43,68 43,61Z"/>
+  <path fill="#A6EFD9" d="M31,53Q31,57 35,57Q31,57 31,61Q31,57 27,57Q31,57 31,53Z"/>
+  <g fill="#fff">
+    <circle cx="36" cy="44" r=".9"/><circle cx="52" cy="32" r=".8"/><circle cx="69" cy="38" r=".8"/><circle cx="75" cy="56" r=".8"/>
+    <circle cx="63" cy="72" r=".8"/><circle cx="43" cy="68" r="1.2"/><circle cx="31" cy="57" r=".8"/>
+  </g>
+</svg>

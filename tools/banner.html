@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hub banner</title>
+<!-- The README banner: the real screen in one phone frame, on Hub's own purple-to-peach sky.
+     tools/screenshots.sh turns this page into screenshots/banner.png. -->
+<style>
+  @font-face { font-family: Hub; font-weight: 400; src: url(../docs/fonts/NotoSerif-Regular.ttf); }
+  @font-face { font-family: Hub; font-style: italic; src: url(../docs/fonts/NotoSerif-Italic.ttf); }
+  *{box-sizing:border-box;margin:0}
+  html,body{width:1280px;height:720px;overflow:hidden}
+  body{font-family:Hub,Georgia,serif;color:#F4F2FB;-webkit-font-smoothing:antialiased;position:relative;background:#4A4F92}
+  canvas{position:absolute;inset:0;width:1280px;height:720px}
+  .left{position:absolute;left:110px;top:0;bottom:0;width:560px;display:flex;flex-direction:column;justify-content:center}
+  .head{display:flex;align-items:center;gap:20px}
+  .head img{width:84px;height:84px;border-radius:22px;box-shadow:0 18px 34px -14px rgba(7,10,30,.7),0 0 0 1px rgba(255,255,255,.18)}
+  h1{font-weight:400;font-size:84px;line-height:1;letter-spacing:-1.5px}
+  .tag{margin-top:22px;font-size:30px;line-height:1.3;font-weight:400}
+  .tag i{color:#FCE3D2}
+  .apps{display:flex;gap:14px;margin-top:34px}
+  .apps span{display:flex}
+  .apps img,.apps b{width:56px;height:56px;border-radius:14px;box-shadow:0 10px 20px -10px rgba(7,10,30,.7)}
+  .apps b{display:flex;align-items:center;justify-content:center;border-radius:50%;box-shadow:inset 0 0 0 2px rgba(255,255,255,.6);font:400 22px Hub,serif;color:#fff}
+  .mono{position:absolute;left:110px;bottom:46px;font:11px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:rgba(236,234,246,.7)}
+  .phone{position:absolute;left:790px;top:56px;width:290px;aspect-ratio:390/844;border-radius:48px;padding:10px;background:#0b0e22;transform:rotate(4deg);
+    box-shadow:0 0 0 1.5px rgba(255,255,255,.22) inset,0 50px 80px -30px rgba(7,10,30,.75),0 0 0 1px rgba(7,10,30,.35)}
+  .phone img{display:block;width:100%;height:100%;border-radius:39px;object-fit:cover;object-position:top}
+  .phone::before{content:"";position:absolute;top:20px;left:50%;width:84px;height:24px;margin-left:-42px;border-radius:13px;background:#05060f;z-index:2}
+</style>
+</head>
+<body>
+<canvas id="c" width="2560" height="1440"></canvas>
+<div class="left">
+  <div class="head"><img src="../docs/icon.svg" alt=""><h1>Hub</h1></div>
+  <p class="tag">Seven apps for looking ahead,<br><i>one tap away.</i></p>
+  <div class="apps" id="apps"></div>
+</div>
+<div class="mono">ANDROID · IPHONE · ANY BROWSER</div>
+<div class="phone"><img src="../screenshots/hub.png" alt=""></div>
+<script>
+  const apps = [['hora', 'Hora'], ['consensus', 'Consensus'], ['augur', 'Augur'], ['annales', 'Annales'], ['kalendae', 'Kalendae'], ['caelum', 'Caelum'], ['fidelis', 'Fidelis']];
+  const box = document.getElementById('apps');
+  for (const [k, n] of apps) {
+    const s = document.createElement('span'), img = new Image();
+    img.src = `../docs/icons/${k}.png`; img.alt = '';
+    img.onerror = () => { const b = document.createElement('b'); b.textContent = n[0]; img.replaceWith(b); };
+    s.title = n; s.append(img); box.append(s);
+  }
+  // Hub's sky: purple-blue to peach, two thin orbits and seeded stars, so the banner only changes when the app does
+  const x = document.getElementById('c').getContext('2d'); x.scale(2, 2);
+  const f = x.createLinearGradient(0, 0, 1280, 720); f.addColorStop(0, '#4A4F92'); f.addColorStop(.62, '#7A5A86'); f.addColorStop(1, '#A4634A');
+  x.fillStyle = f; x.fillRect(0, 0, 1280, 720);
+  const glow = x.createRadialGradient(935, 380, 0, 935, 380, 420); glow.addColorStop(0, 'rgba(252,227,210,.28)'); glow.addColorStop(1, 'rgba(252,227,210,0)');
+  x.fillStyle = glow; x.fillRect(0, 0, 1280, 720);
+  x.strokeStyle = 'rgba(255,255,255,.22)'; x.lineWidth = 1;
+  x.beginPath(); x.ellipse(560, 200, 820, 260, -.12, 0, 7); x.stroke();
+  x.beginPath(); x.ellipse(760, 640, 900, 240, -.08, 0, 7); x.stroke();
+  let s = 31; const r = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  for (let i = 0; i < 160; i++) { x.globalAlpha = .25 + r() * .6; x.fillStyle = '#fff'; x.beginPath(); x.arc(r() * 1280, r() * 720, .4 + r() * 1.2, 0, 7); x.fill(); }
+</script>
+</body>
+</html>
