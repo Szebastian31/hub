@@ -8,6 +8,8 @@ pick() { # name, then candidate paths inside ../<repo>
   for p in "$@"; do
     if [ -f "../$repo/$p" ]; then cp "../$repo/$p" "docs/icons/$name.png"; echo "  $name  ← $repo/$p"; return; fi
   done
+  # one put in docs/icons/ by hand (Consensus Weather has no icon file in its repo) stays
+  if [ -f "docs/icons/$name.png" ]; then echo "  $name  ← docs/icons/$name.png, as before"; return; fi
   echo "  $name  not found (shows a letter)"
 }
 pick hora hora icons/icon-192.png icons/icon-512.png
