@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Made from scratch/hub/xx.txt (the same texts as the web version in docs/index.html); edit those, not this -->
+<resources>
+    <string name="kicker">%1$s UYGULAMA</string>
+    <string name="title_1">İleriye bakmak için</string>
+    <string name="title_2">yedi uygulama.</string>
+    <string name="footer">YUKARI BAKMAK İÇİN YAPILDI</string>
+    <string name="cat_clock">Saat</string>
+    <string name="cat_weather">Hava</string>
+    <string name="cat_fate">Kader</string>
+    <string name="cat_journal">Günlük</string>
+    <string name="cat_budget">Bütçe</string>
+    <string name="cat_sky">Gökyüzü</string>
+    <string name="cat_music">Müzik</string>
+    <string name="not_installed_web">Yüklü değil · web sürümünü açar</string>
+    <string name="not_installed">Yüklü değil</string>
+    <string name="isnt_installed">%1$s yüklü değil</string>
+    <string name="cant_open">%1$s açılamadı</string>
+</resources>

@@ -31,16 +31,17 @@ import java.util.Random;
 
 public class MainActivity extends Activity {
 
-    // package name (applicationId in each app's build.gradle), name, category,
+    // package name (applicationId in each app's build.gradle), name, category (a string in res/values-xx, so it
+    // follows the phone's language),
     // and the web version to open if the app isn't installed
     private static final String[][] APPS = {
-        {"com.hora.clock", "Hora", "Clock", "https://szebastian31.github.io/hora/"},
-        {"com.consensus.weather", "Consensus", "Weather", "https://szebastian31.github.io/Consensus_Weather/"},
-        {"com.augur.stars", "Augur", "Fate", "https://szebastian31.github.io/augur/"},
-        {"com.annales.journal", "Annales", "Journal", "https://szebastian31.github.io/annales/"},
-        {"com.kalendae.money", "Kalendae", "Budgeting", "https://szebastian31.github.io/kalendae/"},
-        {"com.caelum.sky", "Caelum", "Sky", "https://szebastian31.github.io/caelum/"},
-        {"com.fidelis.player", "Fidelis", "Music", "https://szebastian31.github.io/fidelis/"},
+        {"com.hora.clock", "Hora", "cat_clock", "https://szebastian31.github.io/hora/"},
+        {"com.consensus.weather", "Consensus", "cat_weather", "https://szebastian31.github.io/Consensus_Weather/"},
+        {"com.augur.stars", "Augur", "cat_fate", "https://szebastian31.github.io/augur/"},
+        {"com.annales.journal", "Annales", "cat_journal", "https://szebastian31.github.io/annales/"},
+        {"com.kalendae.money", "Kalendae", "cat_budget", "https://szebastian31.github.io/kalendae/"},
+        {"com.caelum.sky", "Caelum", "cat_sky", "https://szebastian31.github.io/caelum/"},
+        {"com.fidelis.player", "Fidelis", "cat_music", "https://szebastian31.github.io/fidelis/"},
     };
 
     // same palette as the "Five apps for looking ahead" poster, darkened
@@ -90,21 +91,22 @@ public class MainActivity extends Activity {
         column.setPadding(dp(20), dp(46), dp(20), dp(24));
 
         TextView kicker = new TextView(this);
-        kicker.setText("HUB  ·  0" + APPS.length + " APPS");
+        // worded for seven in each language ("07 APLIKACJI"): check the strings if the count changes
+        kicker.setText("HUB  ·  " + getString(R.string.kicker, String.format(java.util.Locale.ROOT, "%02d", APPS.length)));
         kicker.setTextColor(LABEL);
         kicker.setTypeface(mono);
         kicker.setTextSize(11);
         kicker.setLetterSpacing(0.18f);
-        kicker.setPadding(dp(4), 0, 0, dp(6));
+        kicker.setPaddingRelative(dp(4), 0, 0, dp(6));
         column.addView(kicker);
 
         TextView title = new TextView(this);
-        title.setText("Seven apps for\nlooking ahead.");
+        title.setText(getString(R.string.title_1) + "\n" + getString(R.string.title_2));
         title.setTextColor(TITLE);
         title.setTextSize(27);
         title.setTypeface(serif);
         title.setLineSpacing(0, 1.05f);
-        title.setPadding(dp(4), 0, 0, dp(18));
+        title.setPaddingRelative(dp(4), 0, 0, dp(18));
         column.addView(title);
 
         for (int i = 0; i < APPS.length; i++) {
@@ -115,7 +117,7 @@ public class MainActivity extends Activity {
         }
 
         TextView footer = new TextView(this);
-        footer.setText("MADE TO BE LOOKED UP AT");
+        footer.setText(R.string.footer);
         footer.setTextColor(LABEL);
         footer.setTypeface(mono);
         footer.setTextSize(10);
@@ -130,7 +132,8 @@ public class MainActivity extends Activity {
     }
 
     private View buildRow(String[] app) {
-        String pkg = app[0], label = app[1], category = app[2], web = app[3];
+        String pkg = app[0], label = app[1], web = app[3];
+        String category = getString(getResources().getIdentifier(app[2], "string", getPackageName()));
         PackageManager pm = getPackageManager();
         Intent launch = pm.getLaunchIntentForPackage(pkg);
         boolean installed = launch != null;
@@ -149,7 +152,7 @@ public class MainActivity extends Activity {
         if (!installed) row.setAlpha(0.6f);
 
         LinearLayout.LayoutParams iconLp = new LinearLayout.LayoutParams(dp(52), dp(52));
-        iconLp.rightMargin = dp(13);
+        iconLp.setMarginEnd(dp(13));
         row.addView(buildIcon(pm, pkg, label, installed), iconLp);
 
         LinearLayout text = new LinearLayout(this);
@@ -171,7 +174,7 @@ public class MainActivity extends Activity {
 
         if (!installed) {
             TextView note = new TextView(this);
-            note.setText(web.isEmpty() ? "Not installed" : "Not installed · opens the web version");
+            note.setText(web.isEmpty() ? R.string.not_installed : R.string.not_installed_web);
             note.setTextColor(MUTED);
             note.setTextSize(12);
             note.setPadding(0, dp(3), 0, 0);
@@ -181,10 +184,10 @@ public class MainActivity extends Activity {
         row.addView(text, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
 
         TextView chevron = new TextView(this);
-        chevron.setText("›");
+        chevron.setText(getResources().getConfiguration().getLayoutDirection() == View.LAYOUT_DIRECTION_RTL ? "‹" : "›");
         chevron.setTextColor(BLUE);
         chevron.setTextSize(26);
-        chevron.setPadding(dp(8), 0, 0, dp(2));
+        chevron.setPaddingRelative(dp(8), 0, 0, dp(2));
         row.addView(chevron);
 
         row.setContentDescription(label + ", " + category);
@@ -197,10 +200,10 @@ public class MainActivity extends Activity {
                 } else if (!web.isEmpty()) {
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(web)));
                 } else {
-                    Toast.makeText(this, label + " isn't installed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.isnt_installed, label), Toast.LENGTH_SHORT).show();
                 }
             } catch (ActivityNotFoundException e) {
-                Toast.makeText(this, "Couldn't open " + label, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.cant_open, label), Toast.LENGTH_SHORT).show();
             }
         });
         return row;

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Made from scratch/hub/xx.txt (the same texts as the web version in docs/index.html); edit those, not this -->
+<resources>
+    <string name="kicker">PROGRAMU %1$s</string>
+    <string name="title_1">Programu saba</string>
+    <string name="title_2">za kutazama mbele.</string>
+    <string name="footer">IMETENGENEZWA ILI KUTAZAMA JUU</string>
+    <string name="cat_clock">Saa</string>
+    <string name="cat_weather">Hali ya hewa</string>
+    <string name="cat_fate">Majaliwa</string>
+    <string name="cat_journal">Shajara</string>
+    <string name="cat_budget">Bajeti</string>
+    <string name="cat_sky">Anga</string>
+    <string name="cat_music">Muziki</string>
+    <string name="not_installed_web">Haijasakinishwa · hufungua toleo la wavuti</string>
+    <string name="not_installed">Haijasakinishwa</string>
+    <string name="isnt_installed">%1$s haijasakinishwa</string>
+    <string name="cant_open">Imeshindikana kufungua %1$s</string>
+</resources>

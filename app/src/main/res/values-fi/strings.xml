@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Made from scratch/hub/xx.txt (the same texts as the web version in docs/index.html); edit those, not this -->
+<resources>
+    <string name="kicker">%1$s SOVELLUSTA</string>
+    <string name="title_1">Seitsemän sovellusta</string>
+    <string name="title_2">eteenpäin katsomiseen.</string>
+    <string name="footer">TEHTY YLÖS KATSOTTAVAKSI</string>
+    <string name="cat_clock">Kello</string>
+    <string name="cat_weather">Sää</string>
+    <string name="cat_fate">Kohtalo</string>
+    <string name="cat_journal">Päiväkirja</string>
+    <string name="cat_budget">Budjetti</string>
+    <string name="cat_sky">Taivas</string>
+    <string name="cat_music">Musiikki</string>
+    <string name="not_installed_web">Ei asennettu · avaa verkkoversion</string>
+    <string name="not_installed">Ei asennettu</string>
+    <string name="isnt_installed">%1$s ei ole asennettu</string>
+    <string name="cant_open">Sovellusta %1$s ei voitu avata</string>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Made from scratch/hub/xx.txt (the same texts as the web version in docs/index.html); edit those, not this -->
+<resources>
+    <string name="kicker">%1$s تطبيقات</string>
+    <string name="title_1">سبعة تطبيقات</string>
+    <string name="title_2">للنظر إلى الأمام.</string>
+    <string name="footer">صُنعت لتتطلع إلى الأعلى</string>
+    <string name="cat_clock">الساعة</string>
+    <string name="cat_weather">الطقس</string>
+    <string name="cat_fate">القدر</string>
+    <string name="cat_journal">اليوميات</string>
+    <string name="cat_budget">الميزانية</string>
+    <string name="cat_sky">السماء</string>
+    <string name="cat_music">الموسيقى</string>
+    <string name="not_installed_web">غير مثبّت · يفتح نسخة الويب</string>
+    <string name="not_installed">غير مثبّت</string>
+    <string name="isnt_installed">%1$s غير مثبّت</string>
+    <string name="cant_open">تعذّر فتح %1$s</string>
+</resources>

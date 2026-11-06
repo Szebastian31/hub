@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Made from scratch/hub/xx.txt (the same texts as the web version in docs/index.html); edit those, not this -->
+<resources>
+    <string name="kicker">%1$s ΕΦΑΡΜΟΓΕΣ</string>
+    <string name="title_1">Επτά εφαρμογές</string>
+    <string name="title_2">για να κοιτάς μπροστά.</string>
+    <string name="footer">ΦΤΙΑΓΜΕΝΟ ΓΙΑ ΝΑ ΚΟΙΤΑΣ ΨΗΛΑ</string>
+    <string name="cat_clock">Ρολόι</string>
+    <string name="cat_weather">Καιρός</string>
+    <string name="cat_fate">Μοίρα</string>
+    <string name="cat_journal">Ημερολόγιο</string>
+    <string name="cat_budget">Προϋπολογισμός</string>
+    <string name="cat_sky">Ουρανός</string>
+    <string name="cat_music">Μουσική</string>
+    <string name="not_installed_web">Δεν είναι εγκατεστημένη · ανοίγει την έκδοση web</string>
+    <string name="not_installed">Δεν είναι εγκατεστημένη</string>
+    <string name="isnt_installed">Το %1$s δεν είναι εγκατεστημένο</string>
+    <string name="cant_open">Δεν ήταν δυνατό να ανοίξει το %1$s</string>
+</resources>

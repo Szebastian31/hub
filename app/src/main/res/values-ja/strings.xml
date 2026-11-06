@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Made from scratch/hub/xx.txt (the same texts as the web version in docs/index.html); edit those, not this -->
+<resources>
+    <string name="kicker">%1$s 個のアプリ</string>
+    <string name="title_1">先を見つめる</string>
+    <string name="title_2">七つのアプリ。</string>
+    <string name="footer">見上げるためにつくりました</string>
+    <string name="cat_clock">時計</string>
+    <string name="cat_weather">天気</string>
+    <string name="cat_fate">運命</string>
+    <string name="cat_journal">日記</string>
+    <string name="cat_budget">家計</string>
+    <string name="cat_sky">星空</string>
+    <string name="cat_music">音楽</string>
+    <string name="not_installed_web">未インストール · Web 版を開きます</string>
+    <string name="not_installed">未インストール</string>
+    <string name="isnt_installed">%1$s はインストールされていません</string>
+    <string name="cant_open">%1$s を開けませんでした</string>
+</resources>

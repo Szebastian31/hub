@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Made from scratch/hub/xx.txt (the same texts as the web version in docs/index.html); edit those, not this -->
+<resources>
+    <string name="kicker">%1$s ЗАСТОСУНКІВ</string>
+    <string name="title_1">Сім застосунків,</string>
+    <string name="title_2">щоб дивитися вперед.</string>
+    <string name="footer">СТВОРЕНО, ЩОБ ДИВИТИСЯ ВГОРУ</string>
+    <string name="cat_clock">Годинник</string>
+    <string name="cat_weather">Погода</string>
+    <string name="cat_fate">Доля</string>
+    <string name="cat_journal">Щоденник</string>
+    <string name="cat_budget">Бюджет</string>
+    <string name="cat_sky">Небо</string>
+    <string name="cat_music">Музика</string>
+    <string name="not_installed_web">Не встановлено · відкриває вебверсію</string>
+    <string name="not_installed">Не встановлено</string>
+    <string name="isnt_installed">%1$s не встановлено</string>
+    <string name="cant_open">Не вдалося відкрити %1$s</string>
+</resources>

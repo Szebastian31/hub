@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Made from scratch/hub/xx.txt (the same texts as the web version in docs/index.html); edit those, not this -->
+<resources>
+    <string name="kicker">%1$s ПРИЛОЖЕНИЯ</string>
+    <string name="title_1">Седем приложения,</string>
+    <string name="title_2">за да гледаш напред.</string>
+    <string name="footer">СЪЗДАДЕНО, ЗА ДА ГЛЕДАШ НАГОРЕ</string>
+    <string name="cat_clock">Часовник</string>
+    <string name="cat_weather">Време</string>
+    <string name="cat_fate">Съдба</string>
+    <string name="cat_journal">Дневник</string>
+    <string name="cat_budget">Бюджет</string>
+    <string name="cat_sky">Небе</string>
+    <string name="cat_music">Музика</string>
+    <string name="not_installed_web">Не е инсталирано · отваря уеб версията</string>
+    <string name="not_installed">Не е инсталирано</string>
+    <string name="isnt_installed">%1$s не е инсталирано</string>
+    <string name="cant_open">%1$s не можа да се отвори</string>
+</resources>

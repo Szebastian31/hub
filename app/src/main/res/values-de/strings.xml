@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Made from scratch/hub/xx.txt (the same texts as the web version in docs/index.html); edit those, not this -->
+<resources>
+    <string name="kicker">%1$s APPS</string>
+    <string name="title_1">Sieben Apps für</string>
+    <string name="title_2">den Blick nach vorn.</string>
+    <string name="footer">GEMACHT, UM AUFZUSCHAUEN</string>
+    <string name="cat_clock">Uhr</string>
+    <string name="cat_weather">Wetter</string>
+    <string name="cat_fate">Schicksal</string>
+    <string name="cat_journal">Tagebuch</string>
+    <string name="cat_budget">Budget</string>
+    <string name="cat_sky">Himmel</string>
+    <string name="cat_music">Musik</string>
+    <string name="not_installed_web">Nicht installiert · öffnet die Web-Version</string>
+    <string name="not_installed">Nicht installiert</string>
+    <string name="isnt_installed">%1$s ist nicht installiert</string>
+    <string name="cant_open">%1$s ließ sich nicht öffnen</string>
+</resources>

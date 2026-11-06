@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Made from scratch/hub/xx.txt (the same texts as the web version in docs/index.html); edit those, not this -->
+<resources>
+    <string name="kicker">%1$s برنامه</string>
+    <string name="title_1">هفت برنامه</string>
+    <string name="title_2">برای نگاه به پیش رو.</string>
+    <string name="footer">ساخته شده برای بالا نگریستن</string>
+    <string name="cat_clock">ساعت</string>
+    <string name="cat_weather">هوا</string>
+    <string name="cat_fate">سرنوشت</string>
+    <string name="cat_journal">روزنوشت</string>
+    <string name="cat_budget">بودجه</string>
+    <string name="cat_sky">آسمان</string>
+    <string name="cat_music">موسیقی</string>
+    <string name="not_installed_web">نصب نیست · نسخهٔ وب را باز می‌کند</string>
+    <string name="not_installed">نصب نیست</string>
+    <string name="isnt_installed">%1$s نصب نیست</string>
+    <string name="cant_open">%1$s باز نشد</string>
+</resources>

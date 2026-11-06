@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Made from scratch/hub/xx.txt (the same texts as the web version in docs/index.html); edit those, not this -->
+<resources>
+    <string name="kicker">%1$sটি অ্যাপ</string>
+    <string name="title_1">সামনে তাকানোর</string>
+    <string name="title_2">সাতটি অ্যাপ।</string>
+    <string name="footer">ওপরে তাকানোর জন্য তৈরি</string>
+    <string name="cat_clock">ঘড়ি</string>
+    <string name="cat_weather">আবহাওয়া</string>
+    <string name="cat_fate">ভাগ্য</string>
+    <string name="cat_journal">দিনলিপি</string>
+    <string name="cat_budget">বাজেট</string>
+    <string name="cat_sky">আকাশ</string>
+    <string name="cat_music">সংগীত</string>
+    <string name="not_installed_web">ইনস্টল নেই · ওয়েব সংস্করণ খোলে</string>
+    <string name="not_installed">ইনস্টল নেই</string>
+    <string name="isnt_installed">%1$s ইনস্টল করা নেই</string>
+    <string name="cant_open">%1$s খোলা গেল না</string>
+</resources>

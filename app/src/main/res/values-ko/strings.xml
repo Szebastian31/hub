@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Made from scratch/hub/xx.txt (the same texts as the web version in docs/index.html); edit those, not this -->
+<resources>
+    <string name="kicker">앱 %1$s개</string>
+    <string name="title_1">앞을 내다보는</string>
+    <string name="title_2">일곱 가지 앱.</string>
+    <string name="footer">올려다보도록 만들었습니다</string>
+    <string name="cat_clock">시계</string>
+    <string name="cat_weather">날씨</string>
+    <string name="cat_fate">운세</string>
+    <string name="cat_journal">일기</string>
+    <string name="cat_budget">예산</string>
+    <string name="cat_sky">하늘</string>
+    <string name="cat_music">음악</string>
+    <string name="not_installed_web">설치 안 됨 · 웹 버전이 열립니다</string>
+    <string name="not_installed">설치 안 됨</string>
+    <string name="isnt_installed">%1$s이(가) 설치되어 있지 않습니다</string>
+    <string name="cant_open">%1$s을(를) 열 수 없습니다</string>
+</resources>

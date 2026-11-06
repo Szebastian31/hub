@@ -50,27 +50,80 @@
 <canvas id="sky" aria-hidden="true"></canvas>
 <main>
   <div class="kicker mono" id="kicker">HUB · 07 APPS</div>
-  <h1>Seven apps for<br>looking ahead.</h1>
+  <h1 id="title">Seven apps for<br>looking ahead.</h1>
   <div id="list"></div>
-  <div class="foot mono">MADE TO BE LOOKED UP AT</div>
+  <div class="foot mono" id="foot">MADE TO BE LOOKED UP AT</div>
   <p class="add" id="add"></p>
 </main>
 <script>
 'use strict';
-// name, category, web address, icon (copied in from each app's own repo; a letter in a circle if it's missing)
+// The texts in 33 languages, the same as the Android app's res/values-xx (both made from scratch/hub/xx.txt).
+// Lines: count, title (two lines), footer, the seven categories, not installed (web / plain), two errors, the iPhone tip.
+const T = {
+  ar: ['%s تطبيقات', 'سبعة تطبيقات', 'للنظر إلى الأمام.', 'صُنعت لتتطلع إلى الأعلى', 'الساعة', 'الطقس', 'القدر', 'اليوميات', 'الميزانية', 'السماء', 'الموسيقى', 'غير مثبّت · يفتح نسخة الويب', 'غير مثبّت', '%s غير مثبّت', 'تعذّر فتح %s', 'أبقِ Hub على iPhone: اضغط على <b>مشاركة</b>، ثم على <b>إضافة إلى الشاشة الرئيسية</b>.'],
+  bg: ['%s ПРИЛОЖЕНИЯ', 'Седем приложения,', 'за да гледаш напред.', 'СЪЗДАДЕНО, ЗА ДА ГЛЕДАШ НАГОРЕ', 'Часовник', 'Време', 'Съдба', 'Дневник', 'Бюджет', 'Небе', 'Музика', 'Не е инсталирано · отваря уеб версията', 'Не е инсталирано', '%s не е инсталирано', '%s не можа да се отвори', 'Запазете Hub на iPhone: докоснете <b>Сподели</b>, после <b>Добави към началния екран</b>.'],
+  bn: ['%sটি অ্যাপ', 'সামনে তাকানোর', 'সাতটি অ্যাপ।', 'ওপরে তাকানোর জন্য তৈরি', 'ঘড়ি', 'আবহাওয়া', 'ভাগ্য', 'দিনলিপি', 'বাজেট', 'আকাশ', 'সংগীত', 'ইনস্টল নেই · ওয়েব সংস্করণ খোলে', 'ইনস্টল নেই', '%s ইনস্টল করা নেই', '%s খোলা গেল না', 'Hub আপনার iPhone-এ রাখুন: <b>শেয়ার</b> ট্যাপ করুন, তারপর <b>হোম স্ক্রিনে যোগ করুন</b>।'],
+  cs: ['%s APLIKACÍ', 'Sedm aplikací', 'pro pohled vpřed.', 'VYTVOŘENO PRO POHLED VZHŮRU', 'Hodiny', 'Počasí', 'Osud', 'Deník', 'Rozpočet', 'Obloha', 'Hudba', 'Nenainstalováno · otevře webovou verzi', 'Nenainstalováno', '%s není nainstalován', '%s se nepodařilo otevřít', 'Mějte Hub na iPhonu: klepněte na <b>Sdílet</b> a pak na <b>Přidat na plochu</b>.'],
+  da: ['%s APPS', 'Syv apps til', 'at se fremad.', 'LAVET TIL AT KIGGE OP', 'Ur', 'Vejr', 'Skæbne', 'Dagbog', 'Budget', 'Himmel', 'Musik', 'Ikke installeret · åbner webversionen', 'Ikke installeret', '%s er ikke installeret', 'Kunne ikke åbne %s', 'Hav Hub på din iPhone: tryk på <b>Del</b>, og derefter på <b>Føj til hjemmeskærm</b>.'],
+  de: ['%s APPS', 'Sieben Apps für', 'den Blick nach vorn.', 'GEMACHT, UM AUFZUSCHAUEN', 'Uhr', 'Wetter', 'Schicksal', 'Tagebuch', 'Budget', 'Himmel', 'Musik', 'Nicht installiert · öffnet die Web-Version', 'Nicht installiert', '%s ist nicht installiert', '%s ließ sich nicht öffnen', 'Behalte Hub auf deinem iPhone: tippe auf <b>Teilen</b>, dann auf <b>Zum Home-Bildschirm</b>.'],
+  el: ['%s ΕΦΑΡΜΟΓΕΣ', 'Επτά εφαρμογές', 'για να κοιτάς μπροστά.', 'ΦΤΙΑΓΜΕΝΟ ΓΙΑ ΝΑ ΚΟΙΤΑΣ ΨΗΛΑ', 'Ρολόι', 'Καιρός', 'Μοίρα', 'Ημερολόγιο', 'Προϋπολογισμός', 'Ουρανός', 'Μουσική', 'Δεν είναι εγκατεστημένη · ανοίγει την έκδοση web', 'Δεν είναι εγκατεστημένη', 'Το %s δεν είναι εγκατεστημένο', 'Δεν ήταν δυνατό να ανοίξει το %s', 'Κρατήστε το Hub στο iPhone σας: πατήστε <b>Κοινοποίηση</b> και μετά <b>Προσθήκη στην οθόνη Αφετηρίας</b>.'],
+  en: ['%s APPS', 'Seven apps for', 'looking ahead.', 'MADE TO BE LOOKED UP AT', 'Clock', 'Weather', 'Fate', 'Journal', 'Budgeting', 'Sky', 'Music', 'Not installed · opens the web version', 'Not installed', '%s isn\'t installed', 'Couldn\'t open %s', 'Keep Hub on your iPhone: tap <b>Share</b>, then <b>Add to Home Screen</b>.'],
+  es: ['%s APPS', 'Siete apps para', 'mirar adelante.', 'HECHO PARA MIRAR ARRIBA', 'Reloj', 'Tiempo', 'Destino', 'Diario', 'Presupuesto', 'Cielo', 'Música', 'No instalada · abre la versión web', 'No instalada', '%s no está instalada', 'No se pudo abrir %s', 'Ten Hub en tu iPhone: toca <b>Compartir</b> y luego <b>Añadir a pantalla de inicio</b>.'],
+  fa: ['%s برنامه', 'هفت برنامه', 'برای نگاه به پیش رو.', 'ساخته شده برای بالا نگریستن', 'ساعت', 'هوا', 'سرنوشت', 'روزنوشت', 'بودجه', 'آسمان', 'موسیقی', 'نصب نیست · نسخهٔ وب را باز می‌کند', 'نصب نیست', '%s نصب نیست', '%s باز نشد', 'Hub را روی iPhone نگه دارید: روی <b>اشتراک‌گذاری</b> و سپس <b>افزودن به صفحهٔ اصلی</b> بزنید.'],
+  fi: ['%s SOVELLUSTA', 'Seitsemän sovellusta', 'eteenpäin katsomiseen.', 'TEHTY YLÖS KATSOTTAVAKSI', 'Kello', 'Sää', 'Kohtalo', 'Päiväkirja', 'Budjetti', 'Taivas', 'Musiikki', 'Ei asennettu · avaa verkkoversion', 'Ei asennettu', '%s ei ole asennettu', 'Sovellusta %s ei voitu avata', 'Pidä Hub iPhonessasi: napauta <b>Jaa</b> ja sitten <b>Lisää Koti-valikkoon</b>.'],
+  fr: ['%s APPS', 'Sept apps pour', 'regarder devant.', 'FAIT POUR LEVER LES YEUX', 'Horloge', 'Météo', 'Destin', 'Journal', 'Budget', 'Ciel', 'Musique', 'Non installée · ouvre la version web', 'Non installée', '%s n’est pas installée', 'Impossible d’ouvrir %s', 'Gardez Hub sur votre iPhone : touchez <b>Partager</b>, puis <b>Sur l’écran d’accueil</b>.'],
+  hi: ['%s ऐप', 'आगे देखने के लिए', 'सात ऐप।', 'ऊपर देखने के लिए बना', 'घड़ी', 'मौसम', 'भाग्य', 'डायरी', 'बजट', 'आसमान', 'संगीत', 'इंस्टॉल नहीं · वेब वर्शन खुलता है', 'इंस्टॉल नहीं', '%s इंस्टॉल नहीं है', '%s नहीं खुल सका', 'Hub को अपने iPhone पर रखें: <b>शेयर करें</b> पर टैप करें, फिर <b>होम स्क्रीन में जोड़ें</b> पर।'],
+  hu: ['%s ALKALMAZÁS', 'Hét alkalmazás', 'az előretekintéshez.', 'FELNÉZÉSRE TERVEZVE', 'Óra', 'Időjárás', 'Sors', 'Napló', 'Költségvetés', 'Égbolt', 'Zene', 'Nincs telepítve · a webes verziót nyitja meg', 'Nincs telepítve', 'A(z) %s nincs telepítve', 'Nem sikerült megnyitni: %s', 'Tartsd a Hubot az iPhone-odon: koppints a <b>Megosztás</b>, majd a <b>Főképernyőhöz adás</b> gombra.'],
+  id: ['%s APLIKASI', 'Tujuh aplikasi untuk', 'menatap ke depan.', 'DIBUAT UNTUK DITENGADAHI', 'Jam', 'Cuaca', 'Takdir', 'Jurnal', 'Anggaran', 'Langit', 'Musik', 'Belum terpasang · membuka versi web', 'Belum terpasang', '%s belum terpasang', 'Tidak dapat membuka %s', 'Simpan Hub di iPhone Anda: ketuk <b>Bagikan</b>, lalu <b>Tambah ke Layar Utama</b>.'],
+  it: ['%s APP', 'Sette app per', 'guardare avanti.', 'FATTO PER ALZARE LO SGUARDO', 'Orologio', 'Meteo', 'Destino', 'Diario', 'Budget', 'Cielo', 'Musica', 'Non installata · apre la versione web', 'Non installata', '%s non è installata', 'Impossibile aprire %s', 'Tieni Hub sul tuo iPhone: tocca <b>Condividi</b>, poi <b>Aggiungi alla schermata Home</b>.'],
+  ja: ['%s 個のアプリ', '先を見つめる', '七つのアプリ。', '見上げるためにつくりました', '時計', '天気', '運命', '日記', '家計', '星空', '音楽', '未インストール · Web 版を開きます', '未インストール', '%s はインストールされていません', '%s を開けませんでした', 'Hub を iPhone に置いておくには、<b>共有</b>をタップしてから<b>ホーム画面に追加</b>をタップします。'],
+  ko: ['앱 %s개', '앞을 내다보는', '일곱 가지 앱.', '올려다보도록 만들었습니다', '시계', '날씨', '운세', '일기', '예산', '하늘', '음악', '설치 안 됨 · 웹 버전이 열립니다', '설치 안 됨', '%s이(가) 설치되어 있지 않습니다', '%s을(를) 열 수 없습니다', 'iPhone에 Hub를 두려면 <b>공유</b>를 탭한 다음 <b>홈 화면에 추가</b>를 탭하세요.'],
+  nl: ['%s APPS', 'Zeven apps om', 'vooruit te kijken.', 'GEMAAKT OM NAAR OP TE KIJKEN', 'Klok', 'Weer', 'Lot', 'Dagboek', 'Budget', 'Hemel', 'Muziek', 'Niet geïnstalleerd · opent de webversie', 'Niet geïnstalleerd', '%s is niet geïnstalleerd', 'Kon %s niet openen', 'Houd Hub op je iPhone: tik op <b>Deel</b> en dan op <b>Zet op beginscherm</b>.'],
+  no: ['%s APPER', 'Sju apper for', 'å se fremover.', 'LAGET FOR Å SE OPP', 'Klokke', 'Vær', 'Skjebne', 'Dagbok', 'Budsjett', 'Himmel', 'Musikk', 'Ikke installert · åpner nettversjonen', 'Ikke installert', '%s er ikke installert', 'Kunne ikke åpne %s', 'Ha Hub på iPhonen: trykk på <b>Del</b>, og deretter <b>Legg til på Hjem-skjerm</b>.'],
+  pl: ['%s APLIKACJI', 'Siedem aplikacji,', 'by patrzeć naprzód.', 'STWORZONE, BY PATRZEĆ W GÓRĘ', 'Zegar', 'Pogoda', 'Los', 'Dziennik', 'Budżet', 'Niebo', 'Muzyka', 'Nie zainstalowano · otwiera wersję w przeglądarce', 'Nie zainstalowano', 'Aplikacja %s nie jest zainstalowana', 'Nie udało się otworzyć: %s', 'Zachowaj Hub na iPhonie: stuknij <b>Udostępnij</b>, a potem <b>Do ekranu początkowego</b>.'],
+  pt: ['%s APPS', 'Sete apps para', 'olhar adiante.', 'FEITO PARA OLHAR PARA CIMA', 'Relógio', 'Tempo', 'Destino', 'Diário', 'Orçamento', 'Céu', 'Música', 'Não instalado · abre a versão web', 'Não instalado', '%s não está instalado', 'Não foi possível abrir o %s', 'Mantenha o Hub no seu iPhone: toque em <b>Compartilhar</b> e depois em <b>Adicionar à Tela de Início</b>.'],
+  ro: ['%s APLICAȚII', 'Șapte aplicații', 'ca să privești înainte.', 'FĂCUT CA SĂ PRIVEȘTI ÎN SUS', 'Ceas', 'Vreme', 'Destin', 'Jurnal', 'Buget', 'Cer', 'Muzică', 'Neinstalată · deschide versiunea web', 'Neinstalată', '%s nu este instalată', 'Nu s-a putut deschide %s', 'Păstrează Hub pe iPhone: atinge <b>Partajează</b>, apoi <b>Adaugă pe ecranul principal</b>.'],
+  ru: ['%s ПРИЛОЖЕНИЙ', 'Семь приложений,', 'чтобы смотреть вперёд.', 'СОЗДАНО, ЧТОБЫ СМОТРЕТЬ ВВЕРХ', 'Часы', 'Погода', 'Судьба', 'Дневник', 'Бюджет', 'Небо', 'Музыка', 'Не установлено · откроется веб-версия', 'Не установлено', '%s не установлено', 'Не удалось открыть %s', 'Сохраните Hub на iPhone: нажмите <b>Поделиться</b>, затем <b>На экран «Домой»</b>.'],
+  sk: ['%s APLIKÁCIÍ', 'Sedem aplikácií', 'na pohľad dopredu.', 'VYTVORENÉ NA POHĽAD NAHOR', 'Hodiny', 'Počasie', 'Osud', 'Denník', 'Rozpočet', 'Obloha', 'Hudba', 'Nenainštalované · otvorí webovú verziu', 'Nenainštalované', '%s nie je nainštalovaný', '%s sa nepodarilo otvoriť', 'Majte Hub na iPhone: ťuknite na <b>Zdieľať</b> a potom na <b>Pridať na plochu</b>.'],
+  sv: ['%s APPAR', 'Sju appar för', 'att blicka framåt.', 'GJORD FÖR ATT TITTA UPP', 'Klocka', 'Väder', 'Öde', 'Dagbok', 'Budget', 'Himmel', 'Musik', 'Inte installerad · öppnar webbversionen', 'Inte installerad', '%s är inte installerad', 'Kunde inte öppna %s', 'Ha Hub på din iPhone: tryck på <b>Dela</b> och sedan <b>Lägg till på hemskärmen</b>.'],
+  sw: ['PROGRAMU %s', 'Programu saba', 'za kutazama mbele.', 'IMETENGENEZWA ILI KUTAZAMA JUU', 'Saa', 'Hali ya hewa', 'Majaliwa', 'Shajara', 'Bajeti', 'Anga', 'Muziki', 'Haijasakinishwa · hufungua toleo la wavuti', 'Haijasakinishwa', '%s haijasakinishwa', 'Imeshindikana kufungua %s', 'Weka Hub kwenye iPhone yako: gusa <b>Shiriki</b>, kisha <b>Ongeza kwenye Skrini ya Kwanza</b>.'],
+  te: ['%s యాప్‌లు', 'ముందుకు చూసేందుకు', 'ఏడు యాప్‌లు.', 'పైకి చూసేందుకే తయారైంది', 'గడియారం', 'వాతావరణం', 'విధి', 'డైరీ', 'బడ్జెట్', 'ఆకాశం', 'సంగీతం', 'ఇన్‌స్టాల్ కాలేదు · వెబ్ వెర్షన్ తెరుస్తుంది', 'ఇన్‌స్టాల్ కాలేదు', '%s ఇన్‌స్టాల్ కాలేదు', '%sను తెరవలేకపోయాం', 'Hubను మీ iPhoneలో ఉంచుకోండి: <b>షేర్ చేయి</b> నొక్కి, తర్వాత <b>హోమ్ స్క్రీన్‌కు జోడించు</b> నొక్కండి.'],
+  th: ['%s แอป', 'เจ็ดแอป', 'สำหรับมองไปข้างหน้า', 'สร้างมาให้แหงนมอง', 'นาฬิกา', 'สภาพอากาศ', 'โชคชะตา', 'บันทึก', 'งบประมาณ', 'ท้องฟ้า', 'เพลง', 'ยังไม่ได้ติดตั้ง · เปิดเวอร์ชันเว็บ', 'ยังไม่ได้ติดตั้ง', 'ยังไม่ได้ติดตั้ง %s', 'เปิด %s ไม่ได้', 'เก็บ Hub ไว้บน iPhone: แตะ <b>แชร์</b> แล้วแตะ <b>เพิ่มไปยังหน้าจอโฮม</b>'],
+  tr: ['%s UYGULAMA', 'İleriye bakmak için', 'yedi uygulama.', 'YUKARI BAKMAK İÇİN YAPILDI', 'Saat', 'Hava', 'Kader', 'Günlük', 'Bütçe', 'Gökyüzü', 'Müzik', 'Yüklü değil · web sürümünü açar', 'Yüklü değil', '%s yüklü değil', '%s açılamadı', 'Hub’ı iPhone’unda tut: <b>Paylaş</b>’a, ardından <b>Ana Ekrana Ekle</b>’ye dokun.'],
+  uk: ['%s ЗАСТОСУНКІВ', 'Сім застосунків,', 'щоб дивитися вперед.', 'СТВОРЕНО, ЩОБ ДИВИТИСЯ ВГОРУ', 'Годинник', 'Погода', 'Доля', 'Щоденник', 'Бюджет', 'Небо', 'Музика', 'Не встановлено · відкриває вебверсію', 'Не встановлено', '%s не встановлено', 'Не вдалося відкрити %s', 'Збережіть Hub на iPhone: торкніться <b>Поділитися</b>, а потім <b>На початковий екран</b>.'],
+  vi: ['%s ỨNG DỤNG', 'Bảy ứng dụng', 'để nhìn về phía trước.', 'LÀM RA ĐỂ NGƯỚC NHÌN', 'Đồng hồ', 'Thời tiết', 'Số phận', 'Nhật ký', 'Ngân sách', 'Bầu trời', 'Âm nhạc', 'Chưa cài · mở phiên bản web', 'Chưa cài', 'Chưa cài %s', 'Không mở được %s', 'Giữ Hub trên iPhone: chạm <b>Chia sẻ</b>, rồi <b>Thêm vào MH chính</b>.'],
+  zh: ['%s 个应用', '七个应用，', '帮你看向前方。', '为仰望而生', '时钟', '天气', '命运', '日记', '预算', '星空', '音乐', '未安装 · 打开网页版', '未安装', '未安装 %s', '无法打开 %s', '把 Hub 留在你的 iPhone 上：轻点<b>共享</b>，然后轻点<b>添加到主屏幕</b>。'],
+};
+
+// the phone's language (or ?lang=xx), English if Hub doesn't have it; Arabic and Persian run right to left
+const LANG = (() => {
+  const alias = { nb: 'no', nn: 'no', in: 'id' };
+  const want = [new URLSearchParams(location.search).get('lang'), ...(navigator.languages || [navigator.language])];
+  for (const l of want) { const c = String(l || '').toLowerCase().split('-')[0]; if (T[alias[c] || c]) return alias[c] || c; }
+  return 'en';
+})();
+const RTL = LANG === 'ar' || LANG === 'fa';
+const t = i => T[LANG][i] || T.en[i];
+document.documentElement.lang = LANG; document.documentElement.dir = RTL ? 'rtl' : 'ltr';
+document.querySelector('meta[name=description]').content = `${t(1)} ${t(2)}`.replace(/\s+/g, ' ') + ' Hora, Consensus Weather, Augur, Annales, Kalendae, Caelum, Fidelis.';
+// name, category (a line in T), web address, icon (copied in from each app's own repo; a letter in a circle if it's missing)
 const APPS = [
-  ['Hora', 'Clock', 'https://szebastian31.github.io/hora/', 'hora'],
-  ['Consensus', 'Weather', 'https://szebastian31.github.io/Consensus_Weather/', 'consensus'],
-  ['Augur', 'Fate', 'https://szebastian31.github.io/augur/', 'augur'],
-  ['Annales', 'Journal', 'https://szebastian31.github.io/annales/', 'annales'],
-  ['Kalendae', 'Budgeting', 'https://szebastian31.github.io/kalendae/', 'kalendae'],
-  ['Caelum', 'Sky', 'https://szebastian31.github.io/caelum/', 'caelum'],
-  ['Fidelis', 'Music', 'https://szebastian31.github.io/fidelis/', 'fidelis'],
+  ['Hora', 4, 'https://szebastian31.github.io/hora/', 'hora'],
+  ['Consensus', 5, 'https://szebastian31.github.io/Consensus_Weather/', 'consensus'],
+  ['Augur', 6, 'https://szebastian31.github.io/augur/', 'augur'],
+  ['Annales', 7, 'https://szebastian31.github.io/annales/', 'annales'],
+  ['Kalendae', 8, 'https://szebastian31.github.io/kalendae/', 'kalendae'],
+  ['Caelum', 9, 'https://szebastian31.github.io/caelum/', 'caelum'],
+  ['Fidelis', 10, 'https://szebastian31.github.io/fidelis/', 'fidelis'],
 ];
 
-document.getElementById('kicker').textContent = `HUB · ${String(APPS.length).padStart(2, '0')} APPS`;
+// worded for seven in each language ("07 APLIKACJI"): check T if the count changes
+document.getElementById('kicker').textContent = `HUB · ${t(0).replace('%s', String(APPS.length).padStart(2, '0'))}`;
+document.getElementById('title').replaceChildren(t(1), document.createElement('br'), t(2));
+document.getElementById('foot').textContent = t(3);
 const list = document.getElementById('list');
-for (const [name, cat, url, icon] of APPS) {
+for (const [name, c, url, icon] of APPS) {
+  const cat = t(c);
   const a = document.createElement('a');
   a.className = 'row'; a.href = url; a.target = '_blank'; a.rel = 'noopener';
   a.setAttribute('aria-label', `${name}, ${cat}`);
@@ -81,7 +134,7 @@ for (const [name, cat, url, icon] of APPS) {
   img.onerror = () => { ico.className = 'ico letter'; ico.replaceChildren(name[0]); };
   ico.append(img);
   a.append(ico);
-  a.insertAdjacentHTML('beforeend', `<div class="txt"><div class="name">${name}</div><div class="cat">${cat}</div></div><div class="chev" aria-hidden="true">›</div>`);
+  a.insertAdjacentHTML('beforeend', `<div class="txt"><div class="name">${name}</div><div class="cat">${cat}</div></div><div class="chev" aria-hidden="true">${RTL ? '‹' : '›'}</div>`);
   a.addEventListener('click', () => { if (navigator.vibrate) navigator.vibrate(8); });
   list.append(a);
 }
@@ -90,7 +143,7 @@ for (const [name, cat, url, icon] of APPS) {
 const standalone = navigator.standalone === true || matchMedia('(display-mode: standalone)').matches;
 const ios = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 if (!standalone && ios && !location.search.includes('shot')) {
-  document.getElementById('add').innerHTML = 'Keep Hub on your iPhone: tap <b>Share</b>, then <b>Add to Home Screen</b>.';
+  document.getElementById('add').innerHTML = t(15);
 }
 
 // purple-blue to peach, with faint star dots and two thin orbit lines, like the Android app

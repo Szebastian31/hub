@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Made from scratch/hub/xx.txt (the same texts as the web version in docs/index.html); edit those, not this -->
+<resources>
+    <string name="kicker">%1$s APLICAȚII</string>
+    <string name="title_1">Șapte aplicații</string>
+    <string name="title_2">ca să privești înainte.</string>
+    <string name="footer">FĂCUT CA SĂ PRIVEȘTI ÎN SUS</string>
+    <string name="cat_clock">Ceas</string>
+    <string name="cat_weather">Vreme</string>
+    <string name="cat_fate">Destin</string>
+    <string name="cat_journal">Jurnal</string>
+    <string name="cat_budget">Buget</string>
+    <string name="cat_sky">Cer</string>
+    <string name="cat_music">Muzică</string>
+    <string name="not_installed_web">Neinstalată · deschide versiunea web</string>
+    <string name="not_installed">Neinstalată</string>
+    <string name="isnt_installed">%1$s nu este instalată</string>
+    <string name="cant_open">Nu s-a putut deschide %1$s</string>
+</resources>

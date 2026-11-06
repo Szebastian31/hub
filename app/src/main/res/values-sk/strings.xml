@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Made from scratch/hub/xx.txt (the same texts as the web version in docs/index.html); edit those, not this -->
+<resources>
+    <string name="kicker">%1$s APLIKÁCIÍ</string>
+    <string name="title_1">Sedem aplikácií</string>
+    <string name="title_2">na pohľad dopredu.</string>
+    <string name="footer">VYTVORENÉ NA POHĽAD NAHOR</string>
+    <string name="cat_clock">Hodiny</string>
+    <string name="cat_weather">Počasie</string>
+    <string name="cat_fate">Osud</string>
+    <string name="cat_journal">Denník</string>
+    <string name="cat_budget">Rozpočet</string>
+    <string name="cat_sky">Obloha</string>
+    <string name="cat_music">Hudba</string>
+    <string name="not_installed_web">Nenainštalované · otvorí webovú verziu</string>
+    <string name="not_installed">Nenainštalované</string>
+    <string name="isnt_installed">%1$s nie je nainštalovaný</string>
+    <string name="cant_open">%1$s sa nepodarilo otvoriť</string>
+</resources>

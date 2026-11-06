@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Made from scratch/hub/xx.txt (the same texts as the web version in docs/index.html); edit those, not this -->
+<resources>
+    <string name="kicker">%1$s ALKALMAZÁS</string>
+    <string name="title_1">Hét alkalmazás</string>
+    <string name="title_2">az előretekintéshez.</string>
+    <string name="footer">FELNÉZÉSRE TERVEZVE</string>
+    <string name="cat_clock">Óra</string>
+    <string name="cat_weather">Időjárás</string>
+    <string name="cat_fate">Sors</string>
+    <string name="cat_journal">Napló</string>
+    <string name="cat_budget">Költségvetés</string>
+    <string name="cat_sky">Égbolt</string>
+    <string name="cat_music">Zene</string>
+    <string name="not_installed_web">Nincs telepítve · a webes verziót nyitja meg</string>
+    <string name="not_installed">Nincs telepítve</string>
+    <string name="isnt_installed">A(z) %1$s nincs telepítve</string>
+    <string name="cant_open">Nem sikerült megnyitni: %1$s</string>
+</resources>

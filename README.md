@@ -28,6 +28,8 @@ No app store, no account, no ads. Get the **Android app**, or keep Hub on any ph
 
 Every app has an Android app and a web version for iPhone and any browser. Tap a row and the app opens. In the Android app, an app that isn't installed has a faded row and opens its web version instead.
 
+Hub follows your phone's language: 33 of them, with Arabic and Persian right to left.
+
 ## Getting started
 
 ### Android app (recommended)

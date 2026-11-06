@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Made from scratch/hub/xx.txt (the same texts as the web version in docs/index.html); edit those, not this -->
+<resources>
+    <string name="kicker">%1$s APLIKASI</string>
+    <string name="title_1">Tujuh aplikasi untuk</string>
+    <string name="title_2">menatap ke depan.</string>
+    <string name="footer">DIBUAT UNTUK DITENGADAHI</string>
+    <string name="cat_clock">Jam</string>
+    <string name="cat_weather">Cuaca</string>
+    <string name="cat_fate">Takdir</string>
+    <string name="cat_journal">Jurnal</string>
+    <string name="cat_budget">Anggaran</string>
+    <string name="cat_sky">Langit</string>
+    <string name="cat_music">Musik</string>
+    <string name="not_installed_web">Belum terpasang · membuka versi web</string>
+    <string name="not_installed">Belum terpasang</string>
+    <string name="isnt_installed">%1$s belum terpasang</string>
+    <string name="cant_open">Tidak dapat membuka %1$s</string>
+</resources>

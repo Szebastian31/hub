@@ -1,5 +1,5 @@
 // Keeps Hub opening without a connection. Network first (no-cache skips the browser's own copy), so an update shows at once.
-const VERSION = 'hub-1.5.0';
+const VERSION = 'hub-1.6.0';
 const FILES = ['./', 'index.html', 'manifest.webmanifest', 'icon.svg', 'icons/icon-180.png', 'icons/icon-512.png',
   ...['Regular', 'SemiBold', 'Italic'].map(w => `fonts/NotoSerif-${w}.ttf`),
   ...['hora', 'consensus', 'augur', 'annales', 'kalendae', 'caelum', 'fidelis'].map(a => `icons/${a}.png`)];

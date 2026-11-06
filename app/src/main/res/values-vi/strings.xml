@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Made from scratch/hub/xx.txt (the same texts as the web version in docs/index.html); edit those, not this -->
+<resources>
+    <string name="kicker">%1$s ỨNG DỤNG</string>
+    <string name="title_1">Bảy ứng dụng</string>
+    <string name="title_2">để nhìn về phía trước.</string>
+    <string name="footer">LÀM RA ĐỂ NGƯỚC NHÌN</string>
+    <string name="cat_clock">Đồng hồ</string>
+    <string name="cat_weather">Thời tiết</string>
+    <string name="cat_fate">Số phận</string>
+    <string name="cat_journal">Nhật ký</string>
+    <string name="cat_budget">Ngân sách</string>
+    <string name="cat_sky">Bầu trời</string>
+    <string name="cat_music">Âm nhạc</string>
+    <string name="not_installed_web">Chưa cài · mở phiên bản web</string>
+    <string name="not_installed">Chưa cài</string>
+    <string name="isnt_installed">Chưa cài %1$s</string>
+    <string name="cant_open">Không mở được %1$s</string>
+</resources>

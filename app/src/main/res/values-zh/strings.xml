@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Made from scratch/hub/xx.txt (the same texts as the web version in docs/index.html); edit those, not this -->
+<resources>
+    <string name="kicker">%1$s 个应用</string>
+    <string name="title_1">七个应用，</string>
+    <string name="title_2">帮你看向前方。</string>
+    <string name="footer">为仰望而生</string>
+    <string name="cat_clock">时钟</string>
+    <string name="cat_weather">天气</string>
+    <string name="cat_fate">命运</string>
+    <string name="cat_journal">日记</string>
+    <string name="cat_budget">预算</string>
+    <string name="cat_sky">星空</string>
+    <string name="cat_music">音乐</string>
+    <string name="not_installed_web">未安装 · 打开网页版</string>
+    <string name="not_installed">未安装</string>
+    <string name="isnt_installed">未安装 %1$s</string>
+    <string name="cant_open">无法打开 %1$s</string>
+</resources>
