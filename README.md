@@ -6,6 +6,8 @@
 
 <p align="center"><a href="https://github.com/Szebastian31/hub/releases/latest"><img src="https://img.shields.io/badge/Download%20APK-Android-2f3fa8?style=for-the-badge&logo=android&logoColor=white" alt="Download APK"></a> <a href="https://szebastian31.github.io/hub/"><img src="https://img.shields.io/badge/Open%20in%20browser-iPhone%20%26%20web-a4634a?style=for-the-badge" alt="Open Hub"></a></p>
 
+**Or get updates automatically with Obtainium:** [Add Hub to Obtainium](https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.szebastian.hub%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2FSzebastian31%2Fhub%22%2C%22author%22%3A%22Szebastian31%22%2C%22name%22%3A%22Hub%22%7D)
+
 No app store, no account, no ads. Get the **Android app**, or keep Hub on any phone's Home Screen. Nothing is collected.
 
 ---
